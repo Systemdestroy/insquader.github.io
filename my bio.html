@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Insquader — Bio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Manrope', sans-serif;
+            background: radial-gradient(circle at top, #00ffd0 0%, #021012 80%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        /* ✨ НЕОНОВЫЙ ФОН */
+        body::before {
+            content: "";
+            position: absolute;
+            width: 140%;
+            height: 140%;
+            background: radial-gradient(circle at center, rgba(0,255,200,0.25), transparent 70%);
+            animation: rotateGlow 14s linear infinite;
+            filter: blur(100px);
+        }
+
+        @keyframes rotateGlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* ✨ КАРТОЧКА */
+        .card {
+            width: 100%;
+            max-width: 500px;
+            background: rgba(0,0,0,0.55);
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(0,255,200,0.25);
+            border-radius: 32px;
+            padding: 28px;
+            text-align: center;
+            position: relative;
+            z-index: 5;
+            box-shadow: 0 0 45px rgba(0,255,200,0.45);
+            animation: cardPulse 5s ease-in-out infinite;
+        }
+
+        @keyframes cardPulse {
+            0%,100% { box-shadow: 0 0 45px rgba(0,255,200,0.35); }
+            50% { box-shadow: 0 0 75px rgba(0,255,200,0.7); }
+        }
+
+        /* ✨ АНИМИРОВАННАЯ НЕОНОВАЯ РАМКА ВОКРУГ АВАТАРКИ */
+        .avatar {
+            width: 140px;
+            height: 140px;
+            position: relative;
+            margin: 0 auto 18px;
+            border-radius: 28px;
+            overflow: hidden;
+        }
+
+        /* неоновое свечение */
+        .avatar::before {
+            content: "";
+            position: absolute;
+            inset: -4px;
+            border-radius: 32px;
+            background: linear-gradient(120deg,
+                #00ffd0,
+                #00aaff,
+                #00ffd0,
+                #00ff88
+            );
+            filter: blur(12px);
+            animation: neonBorder 3s linear infinite;
+        }
+
+        @keyframes neonBorder {
+            0% { transform: rotate(0deg); filter: blur(12px); }
+            50% { filter: blur(18px); }
+            100% { transform: rotate(360deg); filter: blur(12px); }
+        }
+
+        /* внутренняя картинка */
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 26px;
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin: 12px 0 6px;
+        }
+
+        .tagline {
+            color: #97ffd8;
+            font-size: 15px;
+            margin-bottom: 14px;
+        }
+
+        .status {
+            display: inline-block;
+            margin-bottom: 22px;
+            padding: 6px 16px;
+            border-radius: 16px;
+            background: rgba(0,255,180,0.15);
+            border: 1px solid rgba(0,255,180,0.35);
+            font-size: 12px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            animation: statusGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes statusGlow {
+            0%,100% { box-shadow: 0 0 10px rgba(0,255,200,0.25); }
+            50% { box-shadow: 0 0 18px rgba(0,255,200,0.55); }
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn {
+            display: block;
+            padding: 12px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 14px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            background: rgba(0,255,180,0.2);
+            border-color: rgba(0,255,180,0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 0 18px rgba(0,255,200,0.45);
+        }
+
+        /* световой пробег при наведении */
+        .btn::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 120%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0,255,200,0.4), transparent);
+            transition: 0.4s;
+        }
+
+        .btn:hover::after {
+            left: 120%;
+        }
+
+        .footer {
+            margin-top: 24px;
+            font-size: 12px;
+            color: #aaffee;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+    <div class="avatar">
+        <img src="https://i.ibb.co/MDw2Mxr7/nnb9obinkpe97fvqcgig.jpg" alt="avatar">
+    </div>
+
+    <h1>Insquader</h1>
+    <div class="tagline">coding •  online</div>
+    <div class="status">Sudezy</div>
+
+    <div class="links">
+        <a href="https://t.me/Insquader" class="btn">Telegram: @Insquader</a>
+
+        <a onclick="navigator.clipboard.writeText('.id1023'); alert('Discord скопирован!');"
+           class="btn" style="cursor:pointer;">
+             Discord: .id1023
+        </a>
+
+        <a href="#" class="btn">Speak only: English, Russian</a>
+        <a href="#" class="btn">Python</a>
+    </div>
+
+    <div class="footer"> 2025 · Bio by Insquader</div>
+</div>
+
+</body>
+</html>
